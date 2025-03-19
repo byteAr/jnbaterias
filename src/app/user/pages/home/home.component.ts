@@ -17,7 +17,6 @@ export default class HomeComponent implements OnInit {
     'bateriachampion.png',
   ];
   currentIndex = 0;
-  currentImage: string | null = this.images[this.currentIndex];
   isVisible = true;
   interval: any;
 
@@ -27,14 +26,13 @@ export default class HomeComponent implements OnInit {
 
   startCarousel() {
     this.interval = setInterval(() => {
-      this.isVisible = false; // Aplica la animación de salida
+      this.isVisible = false; // Se desvanece la imagen actual
 
       setTimeout(() => {
         this.currentIndex = (this.currentIndex + 1) % this.images.length;
-        this.currentImage = this.images[this.currentIndex];
-        this.isVisible = true; // Aplica la animación de entrada
-      }, 1000); // Tiempo de salida
-    }, 4000); // Tiempo total de visualización por imagen
+        this.isVisible = true; // Se muestra la nueva imagen con transición
+      }, 200); // Tiempo de animación de salida
+    }, 3000); // Tiempo total de visualización de cada imagen
   }
 
   ngOnDestroy() {
